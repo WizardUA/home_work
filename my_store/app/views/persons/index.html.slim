@@ -1,0 +1,15 @@
+h2 all users
+
+table
+  tr
+    th id
+    th login
+    th email
+    th
+
+  - @users.each do |u|
+     tr
+      td = u.id
+      td = link_to u.login, person_path(u)
+      td = u.email
+      td = link_to "delete", person_path(u), method: :delete, data: { confirm: "Are you sure?" }

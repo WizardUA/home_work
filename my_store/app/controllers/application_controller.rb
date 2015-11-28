@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def after_sign_in_path_for(resource)
+      profile_person_path(current_user)
+    end
+
+    def after_sign_out_path_for(resource_or_scope)
+      request.referrer
+    end
+
     def render_404
       render file: "public/404.html", status: 404
     end

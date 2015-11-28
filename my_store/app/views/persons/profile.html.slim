@@ -1,0 +1,10 @@
+h2 Hello #{current_user.login}
+
+- if user_signed_in? && current_user.admin
+  h3 Welcome to admin section!
+  p = link_to "add new item", new_item_path
+  p = link_to "show orders", show_orders_items_path
+  p = link_to "all users", persons_path
+
+p your email: #{current_user.email}
+

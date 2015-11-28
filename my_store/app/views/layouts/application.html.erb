@@ -10,7 +10,7 @@
 
   <div class="sessionInfo">
     <% if user_signed_in? %>
-      <span><%= current_user.login %></span>
+      <span><%= link_to current_user.login, profile_person_path(current_user) %></span>
       <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
     <% else %>
       <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
@@ -25,10 +25,10 @@
     <% end %>
   <%end%>  
 
-  <div><%= link_to "items", items_path %></div>
+  <div><%= link_to "ITEMS", items_path %></div>
 
   <% if user_signed_in? %>
-    <div><%= link_to "your cart", show_cart_items_path %></div>
+    <div><%= link_to "YOUR CART", show_cart_items_path %></div>
   <% end %>
 
   <p style="color: red"><%= flash[:error]  %></p>

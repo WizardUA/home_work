@@ -67,10 +67,13 @@ Rails.application.routes.draw do
 
   resources :carts
 
+  resources :persons do
+    get :profile, on: :member
+  end  
+
   # Devise
   root 'home#index/'
-  get 'persons/profile', as: 'user_root'
   devise_for :users
-  get 'persons/profile'
+  #get 'persons/profile'
   
 end
