@@ -56,13 +56,13 @@ Rails.application.routes.draw do
   #   end
 
   resources :items do
-    get    :add_to_cart, on: :member
-    get    :show_cart, on: :collection
+    get :add_to_cart,             on: :member
+    get :show_cart,               on: :collection
     delete :destroy_item_in_cart, on: :member
-    delete :clear_cart, on: :member
-    get    :create_order, on: :member
-    get    :show_orders, on: :collection
-    delete :destroy_order, on: :member
+    delete :clear_cart,           on: :member
+    get :create_order,            on: :member
+    get :show_orders,             on: :collection
+    delete :destroy_order,        on: :member
   end  
 
   resources :carts

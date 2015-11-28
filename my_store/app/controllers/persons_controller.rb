@@ -1,6 +1,6 @@
 class PersonsController < ApplicationController
 
-  before_filter :find_user, only: [:show, :destroy]
+  before_filter :find_user,      only: [:show, :destroy]
   before_filter :check_if_admin, only: [:index, :show, :destroy]
   before_filter :authenticate_user!
 

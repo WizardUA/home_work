@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
-  before_filter :find_item, only: [:show, :edit, :update, :destroy, :add_to_cart, :destroy_item_in_cart]
-  before_filter :find_cart, only: [:show_cart, :destroy_item_in_cart, :clear_cart, :add_to_cart]
+  before_filter :find_item,          only: [:show, :edit, :update, :destroy, :add_to_cart, :destroy_item_in_cart]
+  before_filter :find_cart,          only: [:show_cart, :destroy_item_in_cart, :clear_cart, :add_to_cart]
+  before_filter :check_if_admin,     only: [:new, :edit, :create, :update, :destroy, :show_orders, :destroy_order]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :check_if_admin, only: [:new, :edit, :create, :update, :destroy, :show_orders, :destroy_order]
 
   def index
     @items = Item.all
