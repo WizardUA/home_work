@@ -1,0 +1,21 @@
+h1 Items
+
+- if user_signed_in? && current_user.admin
+  p = link_to "add new item", new_item_path
+  p = link_to "show orders", show_orders_items_path
+
+- if @items.empty?
+  p no items in store
+
+- else  
+  table
+    tr
+      th
+      th name
+      th price
+
+    - @items.each do |i| 
+      tr
+        td = image_tag i.item_image.url(:thumb)
+        td = link_to i.name, item_path(i) 
+        td = i.price

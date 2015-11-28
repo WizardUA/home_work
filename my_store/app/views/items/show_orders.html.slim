@@ -1,0 +1,12 @@
+h1 Orders
+
+- @carts.each do |c|
+  h3 order:
+  p = link_to "delete order", destroy_order_item_path(c), method: :delete, data: { confirm:"Are you sure?" }
+  p created date: #{c.created_at.to_s}
+  p user id = #{c.user_id}
+  - c.items.each do |i|
+    p = link_to i.name, item_path(i)
+    p = i.price
+
+  

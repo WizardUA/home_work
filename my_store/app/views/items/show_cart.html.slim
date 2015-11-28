@@ -1,0 +1,17 @@
+h1 Your cart
+
+- if @cart == nil || @cart.items.empty?
+  h3 cart is empty
+
+- else
+  p = link_to "clear cart", clear_cart_item_path(@cart), method: :delete, data: { confirm: "Are you sure?" }
+
+  p = link_to "create order", create_order_item_path(@cart)
+
+  - @cart.items.each do |i|
+    h3 item:
+    p = image_tag i.item_image.url(:thumb)
+    p = link_to i.name, item_path(i)
+    p price: #{i.price}
+    p = link_to "delete from cart", destroy_item_in_cart_item_path(i), method: :delete
+

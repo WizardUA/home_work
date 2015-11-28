@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +54,23 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :items do
+    get    :add_to_cart, on: :member
+    get    :show_cart, on: :collection
+    delete :destroy_item_in_cart, on: :member
+    delete :clear_cart, on: :member
+    get    :create_order, on: :member
+    get    :show_orders, on: :collection
+    delete :destroy_order, on: :member
+  end  
+
+  resources :carts
+
+  # Devise
+  root 'home#index/'
+  get 'persons/profile', as: 'user_root'
+  devise_for :users
+  get 'persons/profile'
+  
 end

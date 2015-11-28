@@ -1,0 +1,7 @@
+h1 Add to cart
+
+h2= @item.name
+
+= simple_form_for Position.new do |f|
+  = f.input :quantity
+  p = f.submit "Add to cart"

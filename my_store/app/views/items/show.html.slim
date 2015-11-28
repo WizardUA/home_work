@@ -1,0 +1,14 @@
+h1= @item.name
+
+= image_tag @item.item_image.url(:medium)
+
+ul
+  li Ціна: #{@item.price} грн.
+  li Опис: #{@item.description}
+
+  - if user_signed_in?
+    p = link_to "Add to cart", add_to_cart_item_path(@item)
+
+  - if user_signed_in? && current_user.admin
+    p = link_to "Edit", edit_item_path(@item)
+    p = link_to "Delete", @item, method: :delete, data: { confirm: "Are you sure?" }

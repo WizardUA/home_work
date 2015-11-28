@@ -8,6 +8,31 @@
 </head>
 <body>
 
+  <div class="sessionInfo">
+    <% if user_signed_in? %>
+      <span><%= current_user.login %></span>
+      <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+    <% end %>
+  </div>
+
+  <div><h2>MY STORE</h2></div>
+
+  <%if user_signed_in?%>
+    <% if current_user.admin %>
+      <div><h3>Administrator</h3></div>
+    <% end %>
+  <%end%>  
+
+  <div><%= link_to "items", items_path %></div>
+
+  <% if user_signed_in? %>
+    <div><%= link_to "your cart", show_cart_items_path %></div>
+  <% end %>
+
+  <p style="color: red"><%= flash[:error]  %></p>
+  <p style="color: green"><%= flash[:success]  %></p>
 <%= yield %>
 
 </body>

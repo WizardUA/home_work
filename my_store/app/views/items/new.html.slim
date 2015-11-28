@@ -1,0 +1,7 @@
+h1 Create new item
+
+= simple_form_for @item do |f|
+
+  = render partial: "form", locals: { f: f }
+  = f.input :item_image, as: :file
+  p = f.submit "Create new"
