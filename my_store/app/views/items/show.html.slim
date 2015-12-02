@@ -1,14 +1,17 @@
-h1= @item.name
+div class="panel panel-info"
+  div class="panel-heading"
+    = @item.name
 
-= image_tag @item.item_image.url(:medium)
+  div class="panel-body"
+    = image_tag @item.item_image.url(:medium)
 
-ul
-  li Ціна: #{@item.price} грн.
-  li Опис: #{@item.description}
+    ul class="list_group"
+      li class="list-group-item list-group-item-success" Ціна: #{@item.price} грн.
+      li class="list-group-item list-group-item-warning" Опис: #{@item.description}
 
-  - if user_signed_in?
-    p = link_to "Add to cart", add_to_cart_item_path(@item)
+      - if user_signed_in?
+        p = link_to "Add to cart", add_to_cart_item_path(@item), class:"btn btn-success"
 
-  - if user_signed_in? && current_user.admin
-    p = link_to "Edit", edit_item_path(@item)
-    p = link_to "Delete", @item, method: :delete, data: { confirm: "Are you sure?" }
+      - if user_signed_in? && current_user.admin
+        p = link_to "Edit", edit_item_path(@item)
+        p = link_to "Delete", @item, method: :delete, data: { confirm: "Are you sure?" }

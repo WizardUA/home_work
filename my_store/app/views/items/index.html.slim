@@ -3,15 +3,24 @@ h1 Items
 - if @items.empty?
   p no items in store
 
-- else  
-  table
-    tr
-      th
-      th name
-      th price
+- else 
+  div class="row"
+    - @items.each do |i|  
+      div class="col-sm-6 col-md-3"
+        div class="thumbnail"
+          img = image_tag i.item_image.url(:thumb)
+          div class="caption"
+            h3 = link_to i.name, item_path(i)
+            p class="list-group-item list-group-item-success" Price: #{i.price}
 
-    - @items.each do |i| 
-      tr
-        td = image_tag i.item_image.url(:thumb)
-        td = link_to i.name, item_path(i) 
-        td = i.price
+
+
+
+
+
+
+
+
+
+
+
